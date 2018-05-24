@@ -15,3 +15,6 @@ E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\Google.Protobuf.dl
 E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\MySql.Data.xml
 E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.exe.manifest
 E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.application
+D:\workObject\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\MMOServer.exe.config
+D:\workObject\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.exe
+D:\workObject\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.pdb

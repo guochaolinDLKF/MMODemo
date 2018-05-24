@@ -21,6 +21,8 @@ namespace MMOServer.Model
         [ProtoMember(5)]
         public int CurStrength { get; set; }
         [ProtoMember(6)]
-        public int CurExp { get; set; } 
+        public int CurExp { get; set; }
+        [ProtoMember(7)]
+        public int Coin { get; set; }
     }
 }

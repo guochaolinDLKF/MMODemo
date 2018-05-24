@@ -20,5 +20,6 @@ namespace MMOServer.Model
         public int ImgId { get; set; }
         [ProtoMember(5)]
         public string ImgPath { get; set; }
+     
     }
 }
