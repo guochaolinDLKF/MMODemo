@@ -11,14 +11,16 @@ namespace MMOServer.Model
     class CharacterInfo
     {
         [ProtoMember(1)]
-        public int AccountId { get; set; }
+        public string AccountId { get; set; }
         [ProtoMember(2)]
-        public string Name { get; set; }
+        public int CharacterId { get; set; }
         [ProtoMember(3)]
-        public int Level { get; set; }
+        public string Name { get; set; }
         [ProtoMember(4)]
-        public int CurStrength { get; set; }
+        public int Level { get; set; }
         [ProtoMember(5)]
+        public int CurStrength { get; set; }
+        [ProtoMember(6)]
         public int CurExp { get; set; } 
     }
 }

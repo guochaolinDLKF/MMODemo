@@ -23,11 +23,17 @@ namespace MMOServer.Model
             ActionCode = action;
             DataList = dataList;
         }
+        public MSGCallBack(ReturnCode returnCode)
+        {
+            ReturnCode = returnCode; 
+        }
         [ProtoMember(1)]
         public RequestCode RequestCode { get; set; }
         [ProtoMember(2)]
         public ActionCode ActionCode { get; set; }
         [ProtoMember(3)]
         public byte[] DataList;
+        [ProtoMember(4)]
+        public ReturnCode ReturnCode { get; set; }
     }
 }

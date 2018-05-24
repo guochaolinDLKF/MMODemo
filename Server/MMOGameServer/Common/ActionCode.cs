@@ -10,5 +10,6 @@ namespace Common
         None,
         Login,
         Register,
+        GetCharacterInfo 
     }
 }

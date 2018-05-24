@@ -1,0 +1,5 @@
+E:\xgProject\MMODemo\Server\MMOGameServer\Common\bin\Release\Common.exe.config
+E:\xgProject\MMODemo\Server\MMOGameServer\Common\bin\Release\Common.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\Common\bin\Release\Common.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\Common\obj\Release\Common.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\Common\obj\Release\Common.pdb

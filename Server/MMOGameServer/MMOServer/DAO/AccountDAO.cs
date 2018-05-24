@@ -17,16 +17,16 @@ namespace MMOServer.DAO
     /// <param name="username"></param>
     /// <param name="password"></param>
     /// <returns></returns>
-        public AccountInfo VerifyUser(MySqlConnection conn, string username, string password)
+        public AccountInfo VerifyUser(MySqlConnection _conn, string _accountName, string _password)
         {
             MySqlDataReader reader = null;
             try
             {
                 MySqlCommand cmd = new MySqlCommand("select * from accountinfo where" +
                                                     " accountname = @accountname and" +
-                                                    " password = @password", conn);
-                cmd.Parameters.AddWithValue("accountname", username);
-                cmd.Parameters.AddWithValue("password", password);
+                                                    " password = @password", _conn);
+                cmd.Parameters.AddWithValue("accountname", _accountName);
+                cmd.Parameters.AddWithValue("password", _password);
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
@@ -34,8 +34,10 @@ namespace MMOServer.DAO
                     string imgPath = reader.GetString("imgpath");
                     AccountInfo user = new AccountInfo()
                     {
-                        AccountId=id,AccountName = username 
-                    ,Password = password,ImgPath = imgPath
+                        AccountId=id,
+                        AccountName = _accountName,
+                        Password = _password,
+                        ImgPath = imgPath
                     };
                     return user;
                 }
@@ -65,7 +67,7 @@ namespace MMOServer.DAO
             MySqlDataReader reader = null;
             try
             {
-                MySqlCommand cmd = new MySqlCommand("select * from user where accountid = @accountid", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from accountinfo where accountid = @accountid", conn);
                 cmd.Parameters.AddWithValue("accountid", _accountId);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -93,19 +95,20 @@ namespace MMOServer.DAO
         /// <param name="conn"></param>
         /// <param name="username"></param>
         /// <param name="password"></param> 
-        public void AddAccount(MySqlConnection conn,string _accountId, string _accountName, string _password,string _imgPath)
+        public void AddAccount(MySqlConnection conn,string _accountId, string _accountName, string _password,int _imgId,string _imgPath)
         {
-            try  
+            try   
             { 
-                MySqlCommand cmd = new MySqlCommand("insert into user set" +
+                MySqlCommand cmd = new MySqlCommand("insert into accountinfo set" +
                                                     " accountId = @accountId ," +
                                                     " accountName = @accountname ," +
-                                                    " password = @password ," +
-                                                    " imgpath = @imgpath", conn);
+                                                    " password = @password ,"+
+                                                    " imgid = @imgid ,"+"imgpath = @imgpath", conn);
                 cmd.Parameters.AddWithValue("accountId", _accountId);
                 cmd.Parameters.AddWithValue("accountName", _accountName);
                 cmd.Parameters.AddWithValue("password", _password);
-                cmd.Parameters.AddWithValue("imgpath", _imgPath);
+                cmd.Parameters.AddWithValue("imgid", _imgId);
+                cmd.Parameters.AddWithValue("imgpath", _imgPath); 
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

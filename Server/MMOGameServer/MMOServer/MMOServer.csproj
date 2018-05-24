@@ -84,6 +84,11 @@
     <Compile Include="Controllor\CharacterController.cs" />
     <Compile Include="Controllor\ControllerManager.cs" />
     <Compile Include="Controllor\DefaultController.cs" />
+    <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\CharacterDAO.cs" />
+    <Compile Include="Model\AccountInfo.cs" />
+    <Compile Include="Model\CharacterInfo.cs" />
+    <Compile Include="Model\InventoryInfo.cs" />
     <Compile Include="Model\MSGCallBack.cs" />
     <Compile Include="Servers\ClientPeer.cs" />
     <Compile Include="Servers\MainServer.cs" />
@@ -97,9 +102,7 @@
     <None Include="MMOServer_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{2D5AE9A8-3AB4-4ACF-9C96-ECB583BF2338}</Project>

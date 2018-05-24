@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using MMOServer.Model;
 using MMOServer.Tools;
 using MySql.Data.MySqlClient;
 
@@ -53,6 +54,9 @@ namespace MMOServer.Servers
             }
         }
 
+        private AccountInfo mAccount;
+        public Dictionary<int, string> ImgPathDic; 
+        
         public ClientPeer() { }
         public ClientPeer(Socket _socket, MainServer _server)
         {
@@ -60,6 +64,13 @@ namespace MMOServer.Servers
             mClientSock = _socket;
             this.mServer = _server;
             mMysqlConn = ConnHelper.Connect();
+            ImgPathDic=new Dictionary<int, string>()
+            {
+                {1001,"iiefrqwrief"},
+                {1002,"iiefrqwrief"},
+                {1003,"iiefrqwrief"},
+                {1004,"iiefrqwrief"},
+            };
         }
         public void OnProcessMessage(RequestCode _requestCode, ActionCode _actionCode, byte[] _data)
         {
@@ -104,5 +115,19 @@ namespace MMOServer.Servers
                 Console.WriteLine("无法发送消息:" + e);
             }
         }
+        #region 当前用户数据
+        /// <summary>
+        /// 设置当前用户数据
+        /// </summary>
+        /// <param name="info"></param>
+        public void SetCurAccountData(AccountInfo info)
+        {
+            mAccount = info;
+        }
+        #endregion
+
+
+
+
     }
 }
