@@ -5,6 +5,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using MMOServer.Tools;
+using Common;
+using MMOServer.Controllor;
 
 namespace MMOServer.Servers
 {
@@ -24,17 +27,13 @@ namespace MMOServer.Servers
         /// 服务器使用的异步socket
         /// </summary>
         private Socket mServerSock;
-
-        private IPEndPoint mIpEndPoint;
-        private Socket mServerSocket;
-
+        
+        private ControllerManager mControllerManager;
         /// <summary>
         /// 客户端会话列表
         /// </summary>
         private List<ClientPeer> mClientList;
-
-        //private List<Room> roomList = new List<Room>();
-        // private ControllerManager controllerManager;
+        
         /// <summary>
         /// 服务器是否正在运行
         /// </summary>
@@ -50,7 +49,7 @@ namespace MMOServer.Servers
         /// </summary>
         public int Port { get; private set; }
 
-        private Message mMsg;
+        private MessageTool mMsg;
 
         public delegate void StorageGetData(byte[] data);
 
@@ -91,7 +90,7 @@ namespace MMOServer.Servers
             mMaxClient = maxClient;
             mClientList = new List<ClientPeer>();
             mServerSock = new Socket(localIPAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
+            mControllerManager = new ControllerManager(this);
         }
 
         /// <summary>
@@ -103,8 +102,7 @@ namespace MMOServer.Servers
             {
                 IsRunning = true;
                 mServerSock.Bind(new IPEndPoint(this.Address, this.Port));
-                mServerSock.Listen(1024);
-                mMaxClient = 1024;
+                mServerSock.Listen(mMaxClient);
                 mServerSock.BeginAccept(new AsyncCallback(AcceptCallBack), mServerSock);
             }
         }
@@ -144,7 +142,7 @@ namespace MMOServer.Servers
                             mClientList.Add(client);
                             mClientCount++;
                             Console.WriteLine("一个客户端连接进来了");
-                            mMsg = new Message(client, this);
+                            mMsg = new MessageTool(client, this);
 
                         }
                         client.RecvDataBuffer = new byte[mMsg.DataBytesMaxLength];
@@ -207,7 +205,14 @@ namespace MMOServer.Servers
                 }
             }
         }
-
+        public void HandleRequest(RequestCode requestCode, ActionCode actionCode, byte[] data, ClientPeer client)
+        {
+            mControllerManager.HandleRequest(requestCode, actionCode, data, client);
+        }
+        public void SendResponse(ClientPeer client, ActionCode actionCode, byte[] data)
+        {
+            client.SendResponse(actionCode, data);
+        }
         /// <summary>
         /// 关闭一个与客户端之间的会话
         /// </summary>

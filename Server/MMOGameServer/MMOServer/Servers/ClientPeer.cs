@@ -49,14 +49,15 @@ namespace MMOServer.Servers
         }
 
         public ClientPeer() { }
-        public ClientPeer(Socket Socket, MainServer server)
+        public ClientPeer(Socket _socket, MainServer _server)
         {
             mMsg = new MessageTool();
-            mClientSock = Socket;
-            this.mServer = server;
+            mClientSock = _socket;
+            this.mServer = _server;
         }
-        public void OnProcessMessage(RequestCode requestCode, ActionCode actionCode, byte[] data)
+        public void OnProcessMessage(RequestCode _requestCode, ActionCode _actionCode, byte[] _data)
         {
+            mServer.HandleRequest(_requestCode, _actionCode, _data, this);
             Console.WriteLine("接受数据");
         }
 

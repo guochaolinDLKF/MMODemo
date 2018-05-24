@@ -1,1 +1,10 @@
 E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\MMOServer.exe.config
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\MMOServer.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\MMOServer.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\Common.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\LitJSON.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\protobuf-net.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Debug\Common.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.csprojResolveAssemblyReference.cache
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Debug\MMOServer.pdb

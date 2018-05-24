@@ -8,8 +8,9 @@ namespace Common
     public enum RequestCode
     {
         None,
-        Account, 
-        Room,
-        Game,
+        Account,//账户
+        Character,  //角色
+        Room,//房间
+        Game,//游戏
     }
 }

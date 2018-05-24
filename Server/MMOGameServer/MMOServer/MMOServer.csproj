@@ -50,6 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllor\AccountController.cs" />
+    <Compile Include="Controllor\BaseController.cs" />
+    <Compile Include="Controllor\CharacterController.cs" />
+    <Compile Include="Controllor\ControllerManager.cs" />
+    <Compile Include="Controllor\DefaultController.cs" />
     <Compile Include="Model\MSGCallBack.cs" />
     <Compile Include="Servers\ClientPeer.cs" />
     <Compile Include="Servers\MainServer.cs" />
@@ -62,7 +67,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllor\" />
     <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
