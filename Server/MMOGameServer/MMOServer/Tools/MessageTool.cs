@@ -31,7 +31,7 @@ namespace MMOServer.Tools
             GetReceiveData += ParseReceiveData;
             _server.GetData += GetReceiveBytesData;
             ParsedDataObjPacker += client.OnProcessMessage;
-
+            mMainServer = _server;
         }
         private byte[] mDataBytes;
         void GetReceiveBytesData(byte[] data)

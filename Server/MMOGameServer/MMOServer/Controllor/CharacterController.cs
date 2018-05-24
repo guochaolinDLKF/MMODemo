@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MMOServer.Controllor
 {
-    class CharacterController
+    class CharacterController:BaseController
     {
 
     }

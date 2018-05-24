@@ -24,8 +24,8 @@ namespace MMOServer.Controllor
         {
             DefaultController defaultController = new DefaultController();
             controllerDict.Add(defaultController.RequestCode, defaultController);
-            //controllerDict.Add(RequestCode.Account, new UserController());
-            //controllerDict.Add(RequestCode.Room, new RoomController());
+            controllerDict.Add(RequestCode.Account, new AccountController());
+            controllerDict.Add(RequestCode.Character, new CharacterController());
             //controllerDict.Add(RequestCode.Game, new GameController());
         }
 
