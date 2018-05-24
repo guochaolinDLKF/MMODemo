@@ -15,12 +15,12 @@ namespace MMOServer.Controllor
             requestCode = RequestCode.Account;
         }
 
-        public byte[] Login(string data, ClientPeer client, MainServer server)
+        public byte[] Login(byte[] data, ClientPeer client, MainServer server)
         {
             return null;
         }
 
-        public string Register(string data, ClientPeer client, MainServer server)
+        public byte[] Register(byte[] data, ClientPeer client, MainServer server)
         {
             return null;
         }

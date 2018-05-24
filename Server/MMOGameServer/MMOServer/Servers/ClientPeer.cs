@@ -6,12 +6,12 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using MMOServer.Tools;
+using MySql.Data.MySqlClient;
 
 namespace MMOServer.Servers
 {
     class ClientPeer
     {
-        //private static Socket mClientSocket;
         private MainServer mServer;
         private MessageTool mMsg;
         /// <summary>
@@ -31,6 +31,11 @@ namespace MMOServer.Servers
             {
                 mRecvBuffer = value;
             }
+        }
+        private MySqlConnection mMysqlConn;
+        public MySqlConnection MySQLConn
+        {
+            get { return mMysqlConn; }
         }
         /// <summary>
         /// 客户端的Socket
@@ -54,6 +59,7 @@ namespace MMOServer.Servers
             mMsg = new MessageTool();
             mClientSock = _socket;
             this.mServer = _server;
+            mMysqlConn = ConnHelper.Connect();
         }
         public void OnProcessMessage(RequestCode _requestCode, ActionCode _actionCode, byte[] _data)
         {
@@ -69,6 +75,7 @@ namespace MMOServer.Servers
         {
             try
             {
+                ConnHelper.CloseConnection(mMysqlConn);
                 //关闭数据的接受和发送
                 mClientSock.Shutdown(SocketShutdown.Both);
             }

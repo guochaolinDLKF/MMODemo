@@ -1,0 +1,17 @@
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MMOServer.exe.config
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Release\MMOServer.csprojResolveAssemblyReference.cache
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Release\MMOServer.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Release\MMOServer.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MMOServer.exe.manifest
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MMOServer.application
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MMOServer.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MMOServer.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\Common.exe
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\LitJSON.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\protobuf-net.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\Common.pdb
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Release\MMOServer.exe.manifest
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\obj\Release\MMOServer.application
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MySql.Data.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\Google.Protobuf.dll
+E:\xgProject\MMODemo\Server\MMOGameServer\MMOServer\bin\Release\MySql.Data.xml
