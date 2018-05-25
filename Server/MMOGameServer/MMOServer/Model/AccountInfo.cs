@@ -16,10 +16,7 @@ namespace MMOServer.Model
         public string AccountName { get; set; }
         [ProtoMember(3)]
         public string Password { get; set; }
-        [ProtoMember(4)]
-        public int ImgId { get; set; }
-        [ProtoMember(5)]
-        public string ImgPath { get; set; }
+  
      
     }
 }

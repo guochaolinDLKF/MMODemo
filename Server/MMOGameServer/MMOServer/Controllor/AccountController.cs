@@ -33,6 +33,7 @@ namespace MMOServer.Controllor
             }
             else
             {
+                client.IsOnLine = true;
                 client.SetCurAccountData(user);
                 msg = new MSGCallBack(ReturnCode.Success);
             }
@@ -53,10 +54,13 @@ namespace MMOServer.Controllor
             {
                 mAccount.AddAccount(client.MySQLConn,recive.AccountId,
                     recive.AccountName,recive.Password,1001,client.ImgPathDic[1001]);
+                client.IsOnLine = true;
                 msg = new MSGCallBack(ReturnCode.Success);
             }
             return MessageTool.ProtoBufDataSerialize(msg);
         }
+
+       
     }
 }
 

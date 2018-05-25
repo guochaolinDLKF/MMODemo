@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace MMOServer.Model
 {
     [ProtoContract]
-    class InventoryInfo
+    class ImgInfo
     {
         [ProtoMember(1)]
-        public string AccountId { get; set; }
+        public int ImgId { get; set; }
         [ProtoMember(2)]
-        public int InventoryId { get; set; }
+        public string ImgPath { get; set; }
         [ProtoMember(3)]
-        public int HaveNum { get; set; }
+        public string AccountId { get; set; }
     }
 }

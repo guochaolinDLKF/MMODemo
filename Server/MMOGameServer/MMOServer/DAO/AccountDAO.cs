@@ -31,13 +31,11 @@ namespace MMOServer.DAO
                 if (reader.Read())
                 {
                     string id = reader.GetString("accountid");
-                    string imgPath = reader.GetString("imgpath");
                     AccountInfo user = new AccountInfo()
                     {
                         AccountId=id,
                         AccountName = _accountName,
                         Password = _password,
-                        ImgPath = imgPath
                     };
                     return user;
                 }
@@ -102,13 +100,10 @@ namespace MMOServer.DAO
                 MySqlCommand cmd = new MySqlCommand("insert into accountinfo set" +
                                                     " accountId = @accountId ," +
                                                     " accountName = @accountname ," +
-                                                    " password = @password ,"+
-                                                    " imgid = @imgid ,"+"imgpath = @imgpath", conn);
+                                                    " password = @password ", conn);
                 cmd.Parameters.AddWithValue("accountId", _accountId);
                 cmd.Parameters.AddWithValue("accountName", _accountName);
                 cmd.Parameters.AddWithValue("password", _password);
-                cmd.Parameters.AddWithValue("imgid", _imgId);
-                cmd.Parameters.AddWithValue("imgpath", _imgPath); 
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

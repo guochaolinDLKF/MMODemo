@@ -53,10 +53,31 @@ namespace MMOServer.Servers
 
             }
         }
+        /// <summary>
+        /// 是否正在匹配
+        /// </summary>
+        public bool IsMatching = false;
+        /// <summary>
+        /// 是否在线
+        /// </summary>
+        public bool IsOnLine = false;
+        //当前账户
+        private AccountInfo mAccount=null;
+        private List<CharacterInfo> mCharacterList = null; 
+        /// <summary>
+        /// 当前账户拥有的角色列表
+        /// </summary>
+        public List<CharacterInfo> GetCurCharacterInfoList { get { return mCharacterList; } }
+        /// <summary>
+        /// 获取当前账户
+        /// </summary>
+        public AccountInfo GetCurAccount { get {return mAccount;} }
+        /// <summary>
+        /// 头像路径字典
+        /// </summary>
+        public Dictionary<int, string> ImgPathDic;
 
-        private AccountInfo mAccount;
-        public Dictionary<int, string> ImgPathDic; 
-        
+        public RoomManager CurRoom;
         public ClientPeer() { }
         public ClientPeer(Socket _socket, MainServer _server)
         {

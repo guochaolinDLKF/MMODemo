@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MMOServer.Tools;
 using Common;
 using MMOServer.Controllor;
+using MMOServer.Model;
 
 namespace MMOServer.Servers
 {
@@ -27,18 +28,25 @@ namespace MMOServer.Servers
         /// 服务器使用的异步socket
         /// </summary>
         private Socket mServerSock;
-        
+
         private ControllerManager mControllerManager;
         /// <summary>
         /// 客户端会话列表
         /// </summary>
         private List<ClientPeer> mClientList;
-        
+        /// <summary>
+        /// 在线账户列表
+        /// </summary>
+        public List<ClientPeer> OnLineAccountList
+        {
+            get { return mClientList; }
+        }
         /// <summary>
         /// 服务器是否正在运行
         /// </summary>
         public bool IsRunning { get; private set; }
 
+        public int RoomIndex = 10000;
         /// <summary>
         /// 监听的IP地址
         /// </summary>
@@ -54,6 +62,12 @@ namespace MMOServer.Servers
         public delegate void StorageGetData(byte[] data);
 
         public event StorageGetData GetData;
+        /// <summary>
+        /// 房间列表
+        /// </summary>
+        public List<RoomManager> RoomList; 
+
+        #region 连接和断开
 
         public MainServer()
         {
@@ -91,6 +105,7 @@ namespace MMOServer.Servers
             mClientList = new List<ClientPeer>();
             mServerSock = new Socket(localIPAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             mControllerManager = new ControllerManager(this);
+            RoomList=new List<RoomManager>();
         }
 
         /// <summary>
@@ -132,7 +147,7 @@ namespace MMOServer.Servers
             {
                 if (IsRunning)
                 {
-                    Socket server = (Socket) ar.AsyncState;
+                    Socket server = (Socket)ar.AsyncState;
                     Socket clientSocket = server.EndAccept(ar);
                     if (mClientCount <= mMaxClient)
                     {
@@ -173,14 +188,15 @@ namespace MMOServer.Servers
         {
             if (IsRunning)
             {
+               
+                ClientPeer state = (ClientPeer)ar.AsyncState;
+                Socket client = state.ClientSocket;
                 if (!ar.AsyncWaitHandle.WaitOne(5000))
                 {
                     Console.WriteLine("超时");
+                    Close(state);
                     return;
                 }
-                ClientPeer state = (ClientPeer) ar.AsyncState;
-                Socket client = state.ClientSocket;
-
                 try
                 {
 
@@ -222,6 +238,7 @@ namespace MMOServer.Servers
             if (state != null)
             {
                 state.RecvDataBuffer = null;
+                state.IsOnLine = false;
                 lock (mClientList)
                 {
                     mClientList.Remove(state);
@@ -249,5 +266,48 @@ namespace MMOServer.Servers
         {
             CloseAllClient();
         }
+
+        #endregion
+        /// <summary>
+        /// 服务器主动广播
+        /// </summary>
+        public void BroadcastMessage(ClientPeer excludeClient, ActionCode actionCode, byte[] data)
+        {
+
+            foreach (ClientPeer client in OnLineAccountList)
+            {
+                if (client.IsOnLine)
+                {
+                    if (client != excludeClient)
+                    {
+                        SendResponse(client, actionCode, data);
+                    }
+                }
+               
+            }
+        }
+        /// <summary>
+        /// 加入房间
+        /// </summary>
+        /// <param name="_player"></param>
+        /// <param name="_room"></param>
+        public void JoinRoom(ClientPeer _player, RoomManager _room)
+        {
+            _room.AddPlay(_player);
+        }
+
+        public RoomManager CreatRoom(List<ClientPeer> _client)
+        {
+            RoomManager room=new RoomManager(this);
+            RoomInfo info=new RoomInfo()
+            {
+                RoomId = RoomIndex++,
+                TotalNum = 3
+            };
+            room.PlayList= _client;
+            room.SetRoomData(info);
+            return room;
+        }
     }
+
 }

@@ -12,5 +12,6 @@ namespace Common
         Character,  //角色
         Room,//房间
         Game,//游戏
+        Inventory,
     }
 }

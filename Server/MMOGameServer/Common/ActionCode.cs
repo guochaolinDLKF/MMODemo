@@ -10,6 +10,16 @@ namespace Common
         None,
         Login,
         Register,
-        GetCharacterInfo 
+        GetCharacterListInfo,
+        UpdateCharacterListInfo, 
+        GetRoomList,
+        JoinRoom,
+        GetImgInfo,
+        UpdateImgInfo,
+        GetInventoryListInfo,
+        UpdateMove,
+        ShowTimer,
+        StartPlay,
+        SatrtMatchingPlayer,
     }
 }
